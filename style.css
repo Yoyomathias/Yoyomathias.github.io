@@ -38,3 +38,10 @@ main {
     padding: 30px;
     border-radius: 15px;
 }
+/* Image à deviner */
+#image-jeu {
+    width: 200px;
+    height: auto;
+    filter: invert(100%);
+    margin-top: 20px;
+}
