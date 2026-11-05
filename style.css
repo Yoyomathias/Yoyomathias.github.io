@@ -1,0 +1,40 @@
+
+/* Style général de la page */
+body {
+    background-color: #17172b;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    text-align: center;
+}
+
+/* En-tête */
+header {
+    padding: 30px;
+}
+
+h1 {
+    color: #7cdeff;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #cccccc;
+    font-size: 18px;
+}
+
+/* Zone principale */
+main {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+/* Zone du jeu */
+#jeu {
+    background-color: #252541;
+    width: 600px;
+    padding: 30px;
+    border-radius: 15px;
+}
