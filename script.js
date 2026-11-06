@@ -10,10 +10,12 @@ boutonValider.addEventListener("click", function() {
     console.log(couleursChoisies);
     const bonneCouleur = "vert";
 
+const resultat = document.getElementById("resultat");
+
 if (couleursChoisies.length === 1 &&
     couleursChoisies[0].value === bonneCouleur) {
-    alert("Bonne réponse !");
+    resultat.textContent = "Bonne réponse !";
 } else {
-    alert("Mauvaise réponse !");
+    resultat.textContent = "Mauvaise réponse !";
 }
 });
