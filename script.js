@@ -1,11 +1,43 @@
 const images = [
     {
         chemin: "images/Pomme verte.png",
-        couleur: "vert"
+        couleurs: ["vert"]
     },
     {
         chemin: "images/Goutte d'eau.png",
-        couleur: "bleu"
+        couleurs: ["bleu"]
+    },
+    {
+        chemin: "images/Coeur violet.png",
+        couleurs: ["violet"]
+    },
+    {
+        chemin: "images/Chat rouge.png",
+        couleurs: ["rouge", "blanc"]
+    },
+    {
+        chemin: "images/Pizza.png",
+        couleurs: ["jaune-orange", "rouge"]
+    },
+    {
+        chemin: "images/Soleil.png",
+        couleurs: ["rose", "violet"]
+    },
+    {
+        chemin: "images/Chocolat.png",
+        couleurs: ["blanc", "marron"]
+    },
+    {
+        chemin: "images/Fleur.png",
+        couleurs: ["rose", "vert"]
+    },
+    {
+        chemin: "images/Voiture.png",
+        couleurs: ["noir", "gris"]
+    },
+    {
+        chemin: "images/Chaussure.png",
+        couleurs: ["rouge", "blanc"]
     }
 ];
 let imageActuelle = 0;
@@ -13,6 +45,7 @@ let partieTerminee = false;
 const affichageImage = document.getElementById("image-jeu");
 affichageImage.src = images[imageActuelle].chemin;
 const boutonValider = document.getElementById("valider");
+const affichageResultat = document.getElementById("resultat");
 const boutonRecommencer = document.getElementById("recommencer");
 let score = 0;
 let reponseValidee = false;
@@ -73,20 +106,26 @@ boutonValider.addEventListener("click", function() {
     );
 
     console.log(couleursChoisies);
-    const bonneCouleur = images[imageActuelle].couleur;
+    const bonnesCouleurs = images[imageActuelle].couleurs;
 
-const resultat = document.getElementById("resultat");
+const reponsesCorrectes = Array.from(couleursChoisies).map(
+    choix => choix.value
+);
 
-if (couleursChoisies.length === 1 &&
-    couleursChoisies[0].value === bonneCouleur) {
-    resultat.textContent = "Bonne réponse !";
+if (
+    bonnesCouleurs.length === reponsesCorrectes.length &&
+    bonnesCouleurs.every(couleur => reponsesCorrectes.includes(couleur))
+) {
+    affichageResultat.textContent = "Bonne réponse !";
 
     score = score + 1;
     affichageScore.textContent = "Score : " + score;
+
     reponseValidee = true;
 
 } else {
-    resultat.textContent = "Mauvaise réponse !";
+    affichageResultat.textContent = "Mauvaise réponse !";
+
     reponseValidee = true;
 }
 imageSuivante();
