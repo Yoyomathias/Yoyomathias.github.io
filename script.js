@@ -13,11 +13,30 @@ let partieTerminee = false;
 const affichageImage = document.getElementById("image-jeu");
 affichageImage.src = images[imageActuelle].chemin;
 const boutonValider = document.getElementById("valider");
+const boutonRecommencer = document.getElementById("recommencer");
 let score = 0;
 let reponseValidee = false;
 const affichageScore = document.getElementById("score");
 
 console.log(boutonValider);
+function recommencerPartie() {
+    imageActuelle = 0;
+    score = 0;
+    partieTerminee = false;
+    reponseValidee = false;
+    affichageImage.style.display = "inline";
+    document.getElementById("couleurs").style.display = "block";
+    boutonValider.style.display = "inline-block";
+    boutonRecommencer.hidden = true;
+    affichageScore.textContent = "Score : 0";
+    const casesCouleurs = document.querySelectorAll('#couleurs input');
+
+casesCouleurs.forEach(function(caseCouleur) {
+    caseCouleur.checked = false;
+});
+    document.getElementById("resultat").textContent = "";
+    affichageImage.src = images[imageActuelle].chemin;
+}
 function imageSuivante() {
     imageActuelle = imageActuelle + 1;
 
@@ -34,6 +53,12 @@ casesCouleurs.forEach(function(caseCouleur) {
 });
     } else {
         partieTerminee = true;
+        affichageImage.style.display = "none";
+        document.getElementById("couleurs").style.display = "none";
+        boutonValider.style.display = "none";
+        boutonRecommencer.hidden = false;
+        document.getElementById("resultat").textContent =
+    "Partie terminée ! Ton score est de " + score + " sur " + images.length + " !";
     }
 }
 boutonValider.addEventListener("click", function() {
@@ -65,4 +90,7 @@ if (couleursChoisies.length === 1 &&
     reponseValidee = true;
 }
 imageSuivante();
+});
+boutonRecommencer.addEventListener("click", function() {
+    recommencerPartie();
 });
